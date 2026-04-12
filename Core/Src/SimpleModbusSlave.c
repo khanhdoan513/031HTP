@@ -9,7 +9,6 @@ uint16_t holdingRegsSize; // size of the register array
 uint8_t broadcastFlag;
 uint8_t slaveID;
 uint8_t function;
-uint8_t TxEnablePin;
 uint16_t errorCount;
 uint16_t T1_5; // inter character time out
 uint16_t T3_5; // frame delay
@@ -27,8 +26,6 @@ uint16_t modbus_update(UART_HandleTypeDef *huartX, uint16_t *holdingRegs)
 {
 	uint8_t bufferIdx = 0;
 	uint8_t overflow = 0;
-
-    uint8_t data;
     
     uint8_t rcv_id;
     uint16_t rcv_crc;
@@ -48,11 +45,11 @@ uint16_t modbus_update(UART_HandleTypeDef *huartX, uint16_t *holdingRegs)
         // If more bytes is received than the BUFFER_SIZE the overflow flag will be set and the
         // serial buffer will be red untill all the data is cleared from the receive buffer.
         if (overflow)
-        	HAL_UART_Receive(huartX, &data, 1, 100);
+        	temp = (uint8_t)(huartX->Instance->DR & 0x00FF);
         else {
             if (bufferIdx == BUFFER_SIZE)
                 overflow = 1;
-			frame[bufferIdx] = HAL_UART_Receive(huartX, &data, 1, 100);
+            frame[bufferIdx] = (uint8_t)(huartX->Instance->DR & 0x00FF);
 			bufferIdx++;
         }
         delayMicroseconds(T1_5); // inter character time out
@@ -174,7 +171,7 @@ void exceptionResponse(UART_HandleTypeDef *huartX, unsigned char exception)
     }
 }
 
-void modbus_configure(UART_HandleTypeDef *huartX, uint8_t _slaveID, uint8_t _TxEnablePin,uint16_t _holdingRegsSize, uint8_t _lowLatency)
+void modbus_configure(UART_HandleTypeDef *huartX, uint8_t _slaveID, uint16_t _holdingRegsSize, uint8_t _lowLatency)
 {
     slaveID = _slaveID;
     uint32_t _baud = huartX->Init.BaudRate;
@@ -229,9 +226,7 @@ uint16_t calculateCRC(uint8_t bufferSize){
 
 void sendPacket(UART_HandleTypeDef *huartX, uint8_t bufferSize)
 {
-	uint8_t i;
-	for ( i = 0; i < bufferSize; i++)
-		HAL_UART_Transmit(huartX, frame+i, 1, 100);
+	HAL_UART_Transmit(huartX, frame, bufferSize, 100);
 
 	// allow a frame delay to indicate end of transmission
 	delayMicroseconds(T3_5);

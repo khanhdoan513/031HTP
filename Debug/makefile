@@ -60,8 +60,8 @@ all: main-build
 main-build: Firmware_v1.elf secondary-outputs
 
 # Tool invocations
-Firmware_v1.elf: $(OBJS) $(USER_OBJS) D:\Hardware\ in\ the\ Loop\Ex_61_PTH130\Version2\v2\031_HTP\STM32F103RCTX_FLASH.ld makefile objects.list $(OPTIONAL_TOOL_DEPS)
-	arm-none-eabi-gcc -o "Firmware_v1.elf" @"objects.list" $(USER_OBJS) $(LIBS) -mcpu=cortex-m3 -T"D:\Hardware in the Loop\Ex_61_PTH130\Version2\v2\031_HTP\STM32F103RCTX_FLASH.ld" --specs=nosys.specs -Wl,-Map="Firmware_v1.map" -Wl,--gc-sections -static --specs=nano.specs -mfloat-abi=soft -mthumb -Wl,--start-group -lc -lm -Wl,--end-group
+Firmware_v1.elf: $(OBJS) $(USER_OBJS) D:\Hardware\ in\ the\ Loop\Ex_61_PTH130\Version2\v2\031_HTP\031HTP\STM32F103RCTX_FLASH.ld makefile objects.list $(OPTIONAL_TOOL_DEPS)
+	arm-none-eabi-gcc -o "Firmware_v1.elf" @"objects.list" $(USER_OBJS) $(LIBS) -mcpu=cortex-m3 -T"D:\Hardware in the Loop\Ex_61_PTH130\Version2\v2\031_HTP\031HTP\STM32F103RCTX_FLASH.ld" --specs=nosys.specs -Wl,-Map="Firmware_v1.map" -Wl,--gc-sections -static --specs=nano.specs -mfloat-abi=soft -mthumb -Wl,--start-group -lc -lm -Wl,--end-group
 	@echo 'Finished building target: $@'
 	@echo ' '
 

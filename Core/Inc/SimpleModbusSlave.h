@@ -81,7 +81,7 @@
 
 #include "main.h"
 // function definitions
-void modbus_configure(UART_HandleTypeDef *huartX, uint8_t _slaveID, uint8_t _TxEnablePin,uint16_t _holdingRegsSize, uint8_t _lowLatency);
+void modbus_configure(UART_HandleTypeDef *huartX, uint8_t _slaveID, uint16_t _holdingRegsSize, uint8_t _lowLatency);
 uint16_t modbus_update(UART_HandleTypeDef *huartX, uint16_t *holdingRegs);
 
 

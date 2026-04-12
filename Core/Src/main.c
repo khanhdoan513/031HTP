@@ -647,7 +647,7 @@ int main(void)
   HAL_UART_Receive_IT(&huart1, &IMU_RxData, 1);
   Relay_init();
 
-  modbus_configure(&huart3, BoardID, 32, HoldingRegSize, 0);
+  modbus_configure(&huart3, BoardID, HoldingRegSize, 0);
 
   /* USER CODE END 2 */
 
