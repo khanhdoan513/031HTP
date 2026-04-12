@@ -1,0 +1,7 @@
+SimpleModbusSlave.c:26:10:modbus_update	48	static
+SimpleModbusSlave.c:163:6:exceptionResponse	24	static
+SimpleModbusSlave.c:177:6:modbus_configure	24	static
+SimpleModbusSlave.c:211:10:calculateCRC	32	static
+SimpleModbusSlave.c:230:6:sendPacket	24	static
+SimpleModbusSlave.c:241:9:UARTX_Available	16	static
+SimpleModbusSlave.c:245:6:delayMicroseconds	16	static
