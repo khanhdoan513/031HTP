@@ -120,23 +120,30 @@ enum{
 	HoldingReg26_H,
 	HoldingReg27_L, // float f27
 	HoldingReg27_H,
-	HoldingReg28_L, // float f28
-	HoldingReg28_H,
-	HoldingReg29_L, // float f29
-	HoldingReg29_H,
-	HoldingReg30_L, // float f30
-	HoldingReg30_H,
-	HoldingReg31_L, // float f31
-	HoldingReg31_H,
 
-	DACPrecisionAzimuthReg_L,
+	IMUAngle_L,		// float f28
+	IMUAngle_H,
+
+
+	KpCoeffReg_L, // float f29
+	KpCoeffReg_H,
+
+	KdCoeffReg_L, // float f30
+	KdCoeffReg_H,
+
+	KiCoeffReg_L, // float f31
+	KiCoeffReg_H,
+
+	DACPrecisionAzimuthReg_L,	// float32
 	DACPrecisionAzimuthReg_H,
-	DACPrecisionElevationReg_L,
+
+	DACPrecisionElevationReg_L,	// float33
 	DACPrecisionElevationReg_H,
 
-	DACCoarseAzimuthReg_L,
+	DACCoarseAzimuthReg_L,	// float 34
 	DACCoarseAzimuthReg_H,
-	DACCoarseElevationReg_L,
+
+	DACCoarseElevationReg_L,	// float 35
 	DACCoarseElevationReg_H,
 
 	// # uint16_t variables = 16
@@ -171,80 +178,73 @@ enum{
 };
 
 typedef struct {
-	uint16_t HoldingReg00_L;
+	uint16_t HoldingReg00_L;	// float 0
 	uint16_t HoldingReg00_H;
-	uint16_t HoldingReg01_L;
+	uint16_t HoldingReg01_L;	// float 1
 	uint16_t HoldingReg01_H;
-	uint16_t HoldingReg02_L;
+	uint16_t HoldingReg02_L;	// float 2
 	uint16_t HoldingReg02_H;
-	uint16_t HoldingReg03_L;
+	uint16_t HoldingReg03_L;	// float 3
 	uint16_t HoldingReg03_H;
-	uint16_t HoldingReg04_L;
+	uint16_t HoldingReg04_L;	// float 4
 	uint16_t HoldingReg04_H;
-	uint16_t HoldingReg05_L;
+	uint16_t HoldingReg05_L;	// float 5
 	uint16_t HoldingReg05_H;
-	uint16_t HoldingReg06_L;
+	uint16_t HoldingReg06_L;	// float 6
 	uint16_t HoldingReg06_H;
-	uint16_t HoldingReg07_L;
+	uint16_t HoldingReg07_L;	// float 7
 	uint16_t HoldingReg07_H;
-	uint16_t HoldingReg08_L;
+	uint16_t HoldingReg08_L;	// float 8
 	uint16_t HoldingReg08_H;
-	uint16_t HoldingReg09_L;
+	uint16_t HoldingReg09_L;	// float 9
 	uint16_t HoldingReg09_H;
-	uint16_t HoldingReg10_L;
+	uint16_t HoldingReg10_L;	// float 10
 	uint16_t HoldingReg10_H;
-	uint16_t HoldingReg11_L;
+	uint16_t HoldingReg11_L;	// float 11
 	uint16_t HoldingReg11_H;
-	uint16_t HoldingReg12_L;
+	uint16_t HoldingReg12_L;	// float 12
 	uint16_t HoldingReg12_H;
-	uint16_t HoldingReg13_L;
+	uint16_t HoldingReg13_L;	// float 13
 	uint16_t HoldingReg13_H;
-	uint16_t HoldingReg14_L;
+	uint16_t HoldingReg14_L;	// float 14
 	uint16_t HoldingReg14_H;
-	uint16_t HoldingReg15_L;
+	uint16_t HoldingReg15_L;	// float 15
 	uint16_t HoldingReg15_H;
-	uint16_t HoldingReg16_L;
+	uint16_t HoldingReg16_L;	// float 16
 	uint16_t HoldingReg16_H;
-	uint16_t HoldingReg17_L;
+	uint16_t HoldingReg17_L;	// float 17
 	uint16_t HoldingReg17_H;
-	uint16_t HoldingReg18_L;
+	uint16_t HoldingReg18_L;	// float 18
 	uint16_t HoldingReg18_H;
-	uint16_t HoldingReg19_L;
+	uint16_t HoldingReg19_L;	// float 19
 	uint16_t HoldingReg19_H;
-	uint16_t HoldingReg20_L;
+	uint16_t HoldingReg20_L;	// float 20
 	uint16_t HoldingReg20_H;
-	uint16_t HoldingReg21_L;
+	uint16_t HoldingReg21_L;	// float 21
 	uint16_t HoldingReg21_H;
-	uint16_t HoldingReg22_L;
+	uint16_t HoldingReg22_L;	// float 22
 	uint16_t HoldingReg22_H;
-	uint16_t HoldingReg23_L;
+	uint16_t HoldingReg23_L;	// float 23
 	uint16_t HoldingReg23_H;
-	uint16_t HoldingReg24_L;
+	uint16_t HoldingReg24_L;	// float 24
 	uint16_t HoldingReg24_H;
-	uint16_t HoldingReg25_L;
+	uint16_t HoldingReg25_L;	// float 25
 	uint16_t HoldingReg25_H;
-	uint16_t HoldingReg26_L;
+	uint16_t HoldingReg26_L;	// float 26
 	uint16_t HoldingReg26_H;
-	uint16_t HoldingReg27_L;
+	uint16_t HoldingReg27_L;	// float 27
 	uint16_t HoldingReg27_H;
-	uint16_t HoldingReg28_L;
-	uint16_t HoldingReg28_H;
-	uint16_t HoldingReg29_L;
-	uint16_t HoldingReg29_H;
-	uint16_t HoldingReg30_L;
-	uint16_t HoldingReg30_H;
-	uint16_t HoldingReg31_L;
-	uint16_t HoldingReg31_H;
 
-	uint16_t DACPrecisionAzimuthReg_L;
-	uint16_t DACPrecisionAzimuthReg_H;
-	uint16_t DACPrecisionElevationReg_L;
-	uint16_t DACPrecisionElevationReg_H;
+	float IMUAngle;	// float 28
 
-	uint16_t DACCoarseAzimuthReg_L;
-	uint16_t DACCoarseAzimuthReg_H;
-	uint16_t DACCoarseElevationReg_L;
-	uint16_t DACCoarseElevationReg_H;
+	float KpCoeffReg;	// float 29
+	float KiCoeffReg;	// float 30
+	float KdCoeffReg;	// float 31
+
+	float DACPrecisionAzimuthReg;	// float 32
+	float DACPrecisionElevationReg;	// float 33
+	float DACCoarseAzimuthReg;	// float 34
+	float DACCoarseElevationReg;	// float 35
 
 	uint16_t HoldingReg32;
 	uint16_t HoldingReg33;
@@ -301,16 +301,12 @@ UART_HandleTypeDef huart3;
 
 /* USER CODE BEGIN PV */
 IO_MemoryMap_Union_t IO_MemoryMap_Data;
-#define IO_MemoryMap IO_MemoryMap_Data.Array
 //uint16_t IO_MemoryMap[HoldingRegSize];
-<<<<<<< Updated upstream
-=======
 #define BUFFER_SIZE 128
 uint8_t ModbusFrame[BUFFER_SIZE];
 uint8_t frame[BUFFER_SIZE];
 uint8_t idx;
 uint16_t bufferIdx = 0;
->>>>>>> Stashed changes
 float f0 = 3.14;
 float f1;
 uint8_t us_data;
@@ -318,6 +314,8 @@ uint8_t cmd;
 bool cmd_flag;
 uint8_t ack = 0x24;
 uint8_t res[6] = {0x42, 0x20, 0x00, 0x00, 0xff, 0x45};
+/* Khai báo mảng 8 byte */
+uint8_t frame_8byte[8] = {0xAA, 0x01, 0x02, 0x03, 0x04, 0x05, 0x06, 0x16};
 
 // const uint8_t IMU_query[IMU_query_len] = {0x77, 0x04, 0x00, 0x04, 0x08};
 uint8_t IMU_RxData;
@@ -328,7 +326,7 @@ uint8_t csm;
 int32_t Ang_curr;
 int32_t Ang_old;
 int32_t Denta_Ang;
-int32_t Poss_target;
+int32_t IMU_Angle;
 
 
 /* USER CODE END PV */
@@ -405,7 +403,7 @@ void HAL_TIM_PeriodElapsedCallback(TIM_HandleTypeDef *htim){     // every 100ms
 	const uint8_t IMU_query[IMU_query_len] = {0x77, 0x04, 0x00, 0x04, 0x08};
 	if (htim->Instance == TIM4){
 		HAL_GPIO_WritePin(GPIOA, GPIO_PIN_8, 1);
-		HAL_UART_Transmit(&huart1, IMU_query, 5, 10);
+		HAL_UART_Transmit_IT(&huart1, IMU_query, 5);
 		HAL_GPIO_WritePin(GPIOA, GPIO_PIN_8, 0);
 //
 //	    Denta_Ang = Ang_curr - Ang_old;
@@ -422,16 +420,6 @@ void HAL_TIM_PeriodElapsedCallback(TIM_HandleTypeDef *htim){     // every 100ms
 //	    IO_MemoryMap_Data.Named.IMUAngle = IMU_Angle;
 		IO_MemoryMap_Data.Named.IMUAngle += 1;
 
-<<<<<<< Updated upstream
-		Denta_Ang = Ang_curr - Ang_old;
-		if (Denta_Ang >= -36000 && Denta_Ang < -18000){
-			Poss_target += (Denta_Ang + 36000);
-		}else if (Denta_Ang >= -18000 && Denta_Ang <= 18000){
-			Poss_target += Denta_Ang;
-		} else if (Denta_Ang > 18000 && Denta_Ang <= 36000){
-			Poss_target -= (36000 - Denta_Ang);
-		}
-=======
 	}
 	if (htim->Instance == TIM7){
 	  IO_MemoryMap_Data.Named.ButtonAzimuthDown = !IO_MemoryMap_Data.Named.ButtonAzimuthDown;
@@ -439,172 +427,121 @@ void HAL_TIM_PeriodElapsedCallback(TIM_HandleTypeDef *htim){     // every 100ms
 	  IO_MemoryMap_Data.Named.ButtonElevationDown = !IO_MemoryMap_Data.Named.ButtonElevationDown;
 	  IO_MemoryMap_Data.Named.ButtonElevationUp = !IO_MemoryMap_Data.Named.ButtonElevationUp;
 	  IO_MemoryMap_Data.Named.ButtonManual = !IO_MemoryMap_Data.Named.ButtonManual;
->>>>>>> Stashed changes
 	}
 }
 /* Xu ly ngăt nhan RS485 tung byte trong chuoi
  * */
 void HAL_UART_RxCpltCallback(UART_HandleTypeDef *huart){
-<<<<<<< Updated upstream
-//	if (huart->Instance == USART3){
-//		HAL_UART_Receive_IT(&huart3, &us_data, 1);
-//		switch(state_v1){
-//			case BEGIN:
-//				if(us_data == 0x42){
-//					state_v1 = CMD;
-//				}
-//				break;
-//			case CMD:
-//				cmd = us_data;
-//				state_v1 = END;
-//				break;
-//			case END:
-//				if(us_data == 0x45){
-//					cmd_flag = true;
-//				}
-//				state_v1 = BEGIN;
-//			default:
-//				break;
-//		}
-//	}
-=======
->>>>>>> Stashed changes
 
 	if (huart->Instance == USART1){
 
 		static IMU_STATE_t state = CK_77;
 		static uint8_t chksum = 0;
-		static uint8_t X1, X2, X3, Y1, Y2, Y3, Z1, Z2, Z3;
-		float X_angle, Y_angle, Z_angle;
-
+		static uint8_t byte1, byte2, byte3;
 		HAL_UART_Receive_IT(&huart1, &IMU_RxData, 1);
-		//	HAL_UART_Receive_IT(&huart1, MLRxData, 14);
-		//	HAL_UART_Receive_DMA(&huart1, &RxData, 1);
-		switch (state){
-			case CK_77:
-				if (IMU_RxData == 0x77){
-					state = CK_0D;
-				}
-				break;
-			case CK_0D:
-				if (IMU_RxData == 0x0D){
-					chksum += IMU_RxData;
-					state = CK_00;
-				}else{
-					state = CK_77;
-				}
-				break;
-			case CK_00:
-				if (IMU_RxData == 0x00){
-					chksum += IMU_RxData;
-					state = CK_84;
-				}else{
-					state = CK_77;
-				}
-				break;
-			case CK_84:
-				if (IMU_RxData == 0x84){
-					chksum += IMU_RxData;
-					state = READ_X1;
-				}else{
-					state = CK_77;
-				}
-				break;
-			case READ_X1:
-				X1 = IMU_RxData;
-				chksum += IMU_RxData;
-				state = READ_X2;
-				break;
-			case READ_X2:
-				X2 = IMU_RxData;
-				chksum += IMU_RxData;
-				state = READ_X3;
-				break;
-			case READ_X3:
-				X3 = IMU_RxData;
-				chksum += IMU_RxData;
-				state = READ_Y1;
-				break;
-			case READ_Y1:
-				Y1 = IMU_RxData;
-				chksum += IMU_RxData;
-				state = READ_Y2;
-				break;
-			case READ_Y2:
-				Y2 = IMU_RxData;
-				state = READ_Y3;
-				chksum += IMU_RxData;
-				break;
-			case READ_Y3:
-				Y3 = IMU_RxData;
-				state = READ_Z1;
-				chksum += IMU_RxData;
-				break;
-			case READ_Z1:
-				Z1 = IMU_RxData;
-				chksum += IMU_RxData;
-				//      Ang_curr = (RxData & 0x0F) * 10000;
-				state = READ_Z2;
-				break;
-			case READ_Z2:
-				Z2 = IMU_RxData;
-				chksum += IMU_RxData;
-		//        Ang_curr += ((RxData & 0xF0) >> 4) * 1000;
-		//        Ang_curr += (RxData & 0x0F) * 100;
-				state = READ_Z3;
-				break;
-			case READ_Z3:
-				Z3 = IMU_RxData;
-				chksum += IMU_RxData;
-		//        Ang_curr += ((RxData & 0xF0) >> 4) * 10;
-		//        Ang_curr += (RxData & 0x0F);
-				state = CHECKSUM;
-				break;
-			case CHECKSUM:
-				if (IMU_RxData == chksum){
-					cnt++;
-					Ang_curr = (X1 & 0x0F) * 10000;
-					Ang_curr += ((X2 & 0xF0) >> 4) * 1000;
-					Ang_curr += (X2 & 0x0F) * 100;
-					Ang_curr += ((X3 & 0xF0) >> 4) * 10;
-					Ang_curr += (X3 & 0x0F);
-					chksum = 0;
-					X_angle = (float)(Ang_curr);
-					_RET(&X_angle,HoldingReg00_L);
-
-					Ang_curr = (Y1 & 0x0F) * 10000;
-					Ang_curr += ((Y2 & 0xF0) >> 4) * 1000;
-					Ang_curr += (Y2 & 0x0F) * 100;
-					Ang_curr += ((Y3 & 0xF0) >> 4) * 10;
-					Ang_curr += (Y3 & 0x0F);
-					Y_angle = (float)(Ang_curr);
-					_RET(&Y_angle,HoldingReg00_L);
-
-					Ang_curr = (Z1 & 0x0F) * 10000;
-					Ang_curr += ((Z2 & 0xF0) >> 4) * 1000;
-					Ang_curr += (Z2 & 0x0F) * 100;
-					Ang_curr += ((Z3 & 0xF0) >> 4) * 10;
-					Ang_curr += (Z3 & 0x0F);
-					Z_angle = (float)(Ang_curr);
-					_RET(&Z_angle,HoldingReg00_L);
-
-				}
-				state = CK_77;
-				break;
-			default:
-				break;
-		}
+		switch (state)
+		  {
+		  case CK_77:
+		    if (IMU_RxData == 0x77)
+		    {
+		      state = CK_0D;
+		    }
+		    break;
+		  case CK_0D:
+		    if (IMU_RxData == 0x0D)
+		    {
+		    	chksum += IMU_RxData;
+		      state = CK_00;
+		    }
+		    else
+		    {
+		      state = CK_77;
+		    }
+		    break;
+		  case CK_00:
+		    if (IMU_RxData == 0x00)
+		    {
+		    	chksum += IMU_RxData;
+		      state = CK_84;
+		    }
+		    else
+		    {
+		      state = CK_77;
+		    }
+		    break;
+		  case CK_84:
+		    if (IMU_RxData == 0x84)
+		    {
+		    	chksum += IMU_RxData;
+		      state = READ_X1;
+		    }
+		    else
+		    {
+		      state = CK_77;
+		    }
+		    break;
+		  case READ_X1:
+		    state = READ_X2;
+		    chksum += IMU_RxData;
+		    break;
+		  case READ_X2:
+		    state = READ_X3;
+		    chksum += IMU_RxData;
+		    break;
+		  case READ_X3:
+		    state = READ_Y1;
+		    chksum += IMU_RxData;
+		    break;
+		  case READ_Y1:
+		    state = READ_Y2;
+		    chksum += IMU_RxData;
+		    break;
+		  case READ_Y2:
+		    state = READ_Y3;
+		    chksum += IMU_RxData;
+		    break;
+		  case READ_Y3:
+		    state = READ_Z1;
+		    chksum += IMU_RxData;
+		    break;
+		  case READ_Z1:
+		    byte1 = IMU_RxData;
+		    chksum += IMU_RxData;
+		    //        Ang_curr = (RxData & 0x0F) * 10000;
+		    state = READ_Z2;
+		    break;
+		  case READ_Z2:
+		    byte2 = IMU_RxData;
+		    chksum += IMU_RxData;
+		    //        Ang_curr += ((RxData & 0xF0) >> 4) * 1000;
+		    //        Ang_curr += (RxData & 0x0F) * 100;
+		    state = READ_Z3;
+		    break;
+		  case READ_Z3:
+		    byte3 = IMU_RxData;
+		    chksum += IMU_RxData;
+		    //        Ang_curr += ((RxData & 0xF0) >> 4) * 10;
+		    //        Ang_curr += (RxData & 0x0F);
+		    state = CHECKSUM;
+		    break;
+		  case CHECKSUM:
+		    if (IMU_RxData == chksum)
+		    {
+		      cnt++;
+		      Ang_curr = (byte1 & 0x0F) * 10000;
+		      Ang_curr += ((byte2 & 0xF0) >> 4) * 1000;
+		      Ang_curr += (byte2 & 0x0F) * 100;
+		      Ang_curr += ((byte3 & 0xF0) >> 4) * 10;
+		      Ang_curr += (byte3 & 0x0F);
+		      chksum = 0;
+		    }
+		    state = CK_77;
+		    break;
+		  default:
+		    break;
+		  }
 	}
 }
-<<<<<<< Updated upstream
-void  _RET(float* fval, uint16_t idx){
-	*fval = *(float*)(&IO_MemoryMap[idx]);
-}
-void _WRT(uint16_t idx, float* fval){
-	uint16_t* pi16 = (uint16_t*)fval;
-	IO_MemoryMap[idx]= *pi16;
-	IO_MemoryMap[idx+1]= *(pi16+1);
-=======
 //void  _RET(float* fval, uint16_t idx){
 //	*fval = *(float*)(&IO_MemoryMap[idx]);
 //}
@@ -622,7 +559,6 @@ void HAL_UART_ErrorCallback(UART_HandleTypeDef *huart) {
     if (huart->Instance == USART3) {
         HAL_UARTEx_ReceiveToIdle_IT(huart, frame, BUFFER_SIZE);
     }
->>>>>>> Stashed changes
 }
 void Relay_Update(uint16_t *pMap){
 	static uint8_t bitOld[4] = {0,0,0,0};
@@ -660,6 +596,25 @@ void Relay_init(){
 	CLUTCH_RELAY_OFF;
 	PRE_VALVE_RELAY_OFF;
 	COA_VALVE_RELAY_OFF;
+}
+float PID(IO_MemoryMap_Struct_t Named, float angle, float angle_real){
+	static float ek_1, ek_2, Ik_1;
+	float Kp = Named.KpCoeffReg;
+	float Ki = Named.KiCoeffReg;
+	float Kd = Named.KdCoeffReg;
+
+	float ek = angle - angle_real;
+
+	float Pk = Kp*ek;
+	float Ik = Ik_1 + Ki*(ek+ek_1)/2;
+	float Dk = Kd*(3*ek-4*ek_1+ek_2);
+
+	ek_2 = ek_1;
+	ek_1 = ek;
+
+	Ik_1 = Ik;
+
+	return Pk + Ik + Dk;
 }
 /* USER CODE END 0 */
 
@@ -700,14 +655,12 @@ int main(void)
   HAL_TIM_Base_Start_IT(&htim4);
   HAL_TIM_Base_Start_IT(&htim7);
   HAL_UART_Receive_IT(&huart1, &IMU_RxData, 1);
+
+//  HAL_UART_Receive_IT(&huart3, &us_data, 1);
   Relay_init();
 
   modbus_configure(&huart3, BoardID, HoldingRegSize, 0);
-<<<<<<< Updated upstream
-
-=======
   HAL_UARTEx_ReceiveToIdle_IT(&huart3, frame, BUFFER_SIZE );
->>>>>>> Stashed changes
   /* USER CODE END 2 */
 
   /* Infinite loop */
@@ -717,15 +670,6 @@ int main(void)
     /* USER CODE END WHILE */
 
     /* USER CODE BEGIN 3 */
-<<<<<<< Updated upstream
-	  modbus_update(&huart3, IO_MemoryMap);
-
-	  Relay_Update(IO_MemoryMap);
-	  Btn_Update(IO_MemoryMap);
-
-	  HAL_GPIO_TogglePin(GPIOC, GPIO_PIN_13);
-	  HAL_Delay(50);
-=======
 	  modbus_update(&huart3, IO_MemoryMap_Data.Array);
 
 
@@ -734,11 +678,10 @@ int main(void)
 
 	  HAL_GPIO_TogglePin(GPIOC, GPIO_PIN_13);
 //	  HAL_Delay(500);
->>>>>>> Stashed changes
 	  DAC7716_SetVol(-9.5,0x04);  //day buoc
-	  DAC7716_SetVol(-8.5,0x05);
-	  DAC7716_SetVol(-7.5,0x06);
-	  DAC7716_SetVol(-6.5,0x07);
+//	  DAC7716_SetVol(-8.5,0x05);
+//	  DAC7716_SetVol(-7.5,0x06);
+//	  DAC7716_SetVol(-6.5,0x07);
 //	  HAL_GPIO_TogglePin(GPIOC, GPIO_PIN_3);
 //
 //	  HAL_GPIO_TogglePin(GPIOC, GPIO_PIN_2);
@@ -918,11 +861,7 @@ static void MX_TIM7_Init(void)
 
   /* USER CODE END TIM7_Init 1 */
   htim7.Instance = TIM7;
-<<<<<<< Updated upstream
-  htim7.Init.Prescaler = 64-1;
-=======
   htim7.Init.Prescaler = 64000-1;
->>>>>>> Stashed changes
   htim7.Init.CounterMode = TIM_COUNTERMODE_UP;
   htim7.Init.Period = 1000-1;
   htim7.Init.AutoReloadPreload = TIM_AUTORELOAD_PRELOAD_DISABLE;
@@ -991,7 +930,7 @@ static void MX_USART3_UART_Init(void)
 
   /* USER CODE END USART3_Init 1 */
   huart3.Instance = USART3;
-  huart3.Init.BaudRate = 115200;
+  huart3.Init.BaudRate = 9600;
   huart3.Init.WordLength = UART_WORDLENGTH_8B;
   huart3.Init.StopBits = UART_STOPBITS_1;
   huart3.Init.Parity = UART_PARITY_NONE;
