@@ -303,6 +303,14 @@ UART_HandleTypeDef huart3;
 IO_MemoryMap_Union_t IO_MemoryMap_Data;
 #define IO_MemoryMap IO_MemoryMap_Data.Array
 //uint16_t IO_MemoryMap[HoldingRegSize];
+<<<<<<< Updated upstream
+=======
+#define BUFFER_SIZE 128
+uint8_t ModbusFrame[BUFFER_SIZE];
+uint8_t frame[BUFFER_SIZE];
+uint8_t idx;
+uint16_t bufferIdx = 0;
+>>>>>>> Stashed changes
 float f0 = 3.14;
 float f1;
 uint8_t us_data;
@@ -399,7 +407,22 @@ void HAL_TIM_PeriodElapsedCallback(TIM_HandleTypeDef *htim){     // every 100ms
 		HAL_GPIO_WritePin(GPIOA, GPIO_PIN_8, 1);
 		HAL_UART_Transmit(&huart1, IMU_query, 5, 10);
 		HAL_GPIO_WritePin(GPIOA, GPIO_PIN_8, 0);
+//
+//	    Denta_Ang = Ang_curr - Ang_old;
+//	    Ang_old = Ang_curr;
+//	    if (Denta_Ang >= -36000 && Denta_Ang < -18000){
+//	      IMU_Angle += (Denta_Ang + 36000);
+//	    }
+//	    else if (Denta_Ang >= -18000 && Denta_Ang <= 18000){
+//	    	IMU_Angle += Denta_Ang;
+//	    }
+//	    else if (Denta_Ang > 18000 && Denta_Ang <= 36000){
+//	    	IMU_Angle -= (36000 - Denta_Ang);
+//	    }
+//	    IO_MemoryMap_Data.Named.IMUAngle = IMU_Angle;
+		IO_MemoryMap_Data.Named.IMUAngle += 1;
 
+<<<<<<< Updated upstream
 		Denta_Ang = Ang_curr - Ang_old;
 		if (Denta_Ang >= -36000 && Denta_Ang < -18000){
 			Poss_target += (Denta_Ang + 36000);
@@ -408,11 +431,21 @@ void HAL_TIM_PeriodElapsedCallback(TIM_HandleTypeDef *htim){     // every 100ms
 		} else if (Denta_Ang > 18000 && Denta_Ang <= 36000){
 			Poss_target -= (36000 - Denta_Ang);
 		}
+=======
+	}
+	if (htim->Instance == TIM7){
+	  IO_MemoryMap_Data.Named.ButtonAzimuthDown = !IO_MemoryMap_Data.Named.ButtonAzimuthDown;
+	  IO_MemoryMap_Data.Named.ButtonAzimuthUp = !IO_MemoryMap_Data.Named.ButtonAzimuthUp;
+	  IO_MemoryMap_Data.Named.ButtonElevationDown = !IO_MemoryMap_Data.Named.ButtonElevationDown;
+	  IO_MemoryMap_Data.Named.ButtonElevationUp = !IO_MemoryMap_Data.Named.ButtonElevationUp;
+	  IO_MemoryMap_Data.Named.ButtonManual = !IO_MemoryMap_Data.Named.ButtonManual;
+>>>>>>> Stashed changes
 	}
 }
 /* Xu ly ngăt nhan RS485 tung byte trong chuoi
  * */
 void HAL_UART_RxCpltCallback(UART_HandleTypeDef *huart){
+<<<<<<< Updated upstream
 //	if (huart->Instance == USART3){
 //		HAL_UART_Receive_IT(&huart3, &us_data, 1);
 //		switch(state_v1){
@@ -434,6 +467,8 @@ void HAL_UART_RxCpltCallback(UART_HandleTypeDef *huart){
 //				break;
 //		}
 //	}
+=======
+>>>>>>> Stashed changes
 
 	if (huart->Instance == USART1){
 
@@ -561,6 +596,7 @@ void HAL_UART_RxCpltCallback(UART_HandleTypeDef *huart){
 		}
 	}
 }
+<<<<<<< Updated upstream
 void  _RET(float* fval, uint16_t idx){
 	*fval = *(float*)(&IO_MemoryMap[idx]);
 }
@@ -568,6 +604,25 @@ void _WRT(uint16_t idx, float* fval){
 	uint16_t* pi16 = (uint16_t*)fval;
 	IO_MemoryMap[idx]= *pi16;
 	IO_MemoryMap[idx+1]= *(pi16+1);
+=======
+//void  _RET(float* fval, uint16_t idx){
+//	*fval = *(float*)(&IO_MemoryMap[idx]);
+//}
+//void _WRT(uint16_t idx, float* fval){
+//	uint16_t* pi16 = (uint16_t*)fval;
+//	IO_MemoryMap[idx]= *pi16;
+//	IO_MemoryMap[idx+1]= *(pi16+1);
+//}
+void HAL_UARTEx_RxEventCallback(UART_HandleTypeDef *huart, uint16_t Size)
+{
+	bufferIdx = Size;
+  HAL_UARTEx_ReceiveToIdle_IT(&huart3, frame, BUFFER_SIZE);
+}
+void HAL_UART_ErrorCallback(UART_HandleTypeDef *huart) {
+    if (huart->Instance == USART3) {
+        HAL_UARTEx_ReceiveToIdle_IT(huart, frame, BUFFER_SIZE);
+    }
+>>>>>>> Stashed changes
 }
 void Relay_Update(uint16_t *pMap){
 	static uint8_t bitOld[4] = {0,0,0,0};
@@ -643,12 +698,16 @@ int main(void)
   MX_TIM7_Init();
   /* USER CODE BEGIN 2 */
   HAL_TIM_Base_Start_IT(&htim4);
-  HAL_TIM_Base_Start(&htim7);
+  HAL_TIM_Base_Start_IT(&htim7);
   HAL_UART_Receive_IT(&huart1, &IMU_RxData, 1);
   Relay_init();
 
   modbus_configure(&huart3, BoardID, HoldingRegSize, 0);
+<<<<<<< Updated upstream
 
+=======
+  HAL_UARTEx_ReceiveToIdle_IT(&huart3, frame, BUFFER_SIZE );
+>>>>>>> Stashed changes
   /* USER CODE END 2 */
 
   /* Infinite loop */
@@ -658,6 +717,7 @@ int main(void)
     /* USER CODE END WHILE */
 
     /* USER CODE BEGIN 3 */
+<<<<<<< Updated upstream
 	  modbus_update(&huart3, IO_MemoryMap);
 
 	  Relay_Update(IO_MemoryMap);
@@ -665,6 +725,16 @@ int main(void)
 
 	  HAL_GPIO_TogglePin(GPIOC, GPIO_PIN_13);
 	  HAL_Delay(50);
+=======
+	  modbus_update(&huart3, IO_MemoryMap_Data.Array);
+
+
+	  Relay_Update(IO_MemoryMap_Data.Array);
+//	  Btn_Update(IO_MemoryMap_Data.Array);
+
+	  HAL_GPIO_TogglePin(GPIOC, GPIO_PIN_13);
+//	  HAL_Delay(500);
+>>>>>>> Stashed changes
 	  DAC7716_SetVol(-9.5,0x04);  //day buoc
 	  DAC7716_SetVol(-8.5,0x05);
 	  DAC7716_SetVol(-7.5,0x06);
@@ -848,9 +918,13 @@ static void MX_TIM7_Init(void)
 
   /* USER CODE END TIM7_Init 1 */
   htim7.Instance = TIM7;
+<<<<<<< Updated upstream
   htim7.Init.Prescaler = 64-1;
+=======
+  htim7.Init.Prescaler = 64000-1;
+>>>>>>> Stashed changes
   htim7.Init.CounterMode = TIM_COUNTERMODE_UP;
-  htim7.Init.Period = 0xffff-1;
+  htim7.Init.Period = 1000-1;
   htim7.Init.AutoReloadPreload = TIM_AUTORELOAD_PRELOAD_DISABLE;
   if (HAL_TIM_Base_Init(&htim7) != HAL_OK)
   {

@@ -21,6 +21,12 @@ void delayMicroseconds(uint16_t us);
 uint8_t UARTX_Available(UART_HandleTypeDef *huartX);
 
 extern TIM_HandleTypeDef htim7;
+<<<<<<< Updated upstream
+=======
+extern uint8_t frame[BUFFER_SIZE];
+extern uint8_t ModbusFrame[BUFFER_SIZE];
+extern uint16_t bufferIdx;
+>>>>>>> Stashed changes
 
 uint16_t modbus_update(UART_HandleTypeDef *huartX, uint16_t *holdingRegs)
 {
@@ -63,6 +69,11 @@ uint16_t modbus_update(UART_HandleTypeDef *huartX, uint16_t *holdingRegs)
 
     // The minimum request packet is 8 bytes for function 3 & 16
     if (bufferIdx > 6) {
+<<<<<<< Updated upstream
+=======
+//
+//    	memcpy(frame, ModbusFrame, BUFFER_SIZE);
+>>>>>>> Stashed changes
         rcv_id = frame[0];
 
         broadcastFlag = 0;
@@ -226,7 +237,7 @@ uint16_t calculateCRC(uint8_t bufferSize){
 
 void sendPacket(UART_HandleTypeDef *huartX, uint8_t bufferSize)
 {
-	HAL_UART_Transmit(huartX, frame, bufferSize, 100);
+	HAL_UART_Transmit_IT(huartX, frame, bufferSize);
 
 	// allow a frame delay to indicate end of transmission
 	delayMicroseconds(T3_5);
